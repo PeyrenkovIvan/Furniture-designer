@@ -1,0 +1,22 @@
+<div id="language-selector">
+    {% get_available_languages as languages %}
+    {% for lang_code, lang_name in languages %}
+        <a href="{% language lang_code %}"{% if lang_code == request.LANGUAGE_CODE %} class="active"{% endif %}>
+            {{ lang_name }}
+        </a>
+    {% endfor %}
+</div>
+
+<script>
+        document.getElementById('language-selector').addEventListener('click', function(event) {
+    if (event.target.tagName === 'A') {
+        event.preventDefault();
+        var languageCode = event.target.getAttribute('href').split('/').filter(Boolean).pop();
+        fetch('/lang/' + languageCode + '/')
+            .then(function(response) {
+                // Обновите части страницы, которые нужно перевести на новый язык
+                location.reload();
+            });
+    }
+});
+    </script>

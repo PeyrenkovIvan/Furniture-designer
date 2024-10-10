@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-05 01:42+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
+"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: mebels/templates/mebels/en.html:21 mebels/templates/mebels/he.html:21
+#: mebels/templates/mebels/index.html:21
+msgid "This is a translatable string."
+msgstr "זוהי מחרוזת הניתנת לתרגום."
+
+#: mebels/templates/mebels/index.html:24
+msgid "Bed"
+msgstr "מיטה"
+
+#: mebels/templates/mebels/index.html:25
+msgid "Size"
+msgstr "גודל"
+
+#: mebels/templates/mebels/index.html:27
+msgid "Length:"
+msgstr "אורך"
+
+#: mebels/templates/mebels/index.html:30
+msgid "Width:"
+msgstr "רוֹחַב"
+
+#: mebels/templates/mebels/index.html:33
+msgid "Base:"
+msgstr "בסיס"
+
+#: mebels/templates/mebels/index.html:36
+msgid "Color:"
+msgstr "צֶבַע"
+
+#: yuri/settings.py:124
+msgid "English"
+msgstr "English"
+
+#: yuri/settings.py:125
+msgid "Hebrew"
+msgstr "עִברִית"
+
+#~ msgid "My shop"
+#~ msgstr "החנות שלי"
+
+#~ msgid "Language"
+#~ msgstr "שפה"
+
+#~ msgid "Comfort"
+#~ msgstr "נוחות"
+
+#~ msgid "Prestige"
+#~ msgstr "פרסטיג"

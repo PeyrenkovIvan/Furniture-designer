@@ -1,0 +1,127 @@
+{% extends 'mebels/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+Главная Страница 
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block aside %}
+
+{% endblock %}
+
+{% block article %}
+
+<form method="post" id="filter-form">
+        {% csrf_token %}
+        <p>{% trans "This is a translatable string." %}</p>
+    <div id= menu>
+        <div id="block_menu_burger">
+            <p class="style_bed">Bed</p>
+            <p class="style_size">Size</p>
+
+            <p class="style_length">Length:</p>
+            <label for="id_length">{{ form.length }}</label>
+
+            <p class="style_width">Width:</p>
+            <label for="id_width">{{ form.width }}</label>
+
+            <p class="style_base">Base:</p>
+            <label for="id_base">{{ form.base }}</label>
+
+            <p class="style_color">Color:</p>
+            <label for="id_color">{{ form.color }}</label>
+        </div>
+        <!-- <button type="submit" class="style_apply">Выбрать</button> -->
+    </div>
+
+    
+
+</form>
+
+
+<!-- Image Result -->
+    <!-- <div style="float:right;">
+        {% if filtered_image %}
+        <img src="{{ filtered_image.images.url }}" >
+        {% else %}
+            <li>Нет результатов, удовлетворяющих выбранным параметрам.</li>
+        {% endif %}
+
+    </div> -->
+
+
+<div id="filtered-results" style="float:right;">
+        <!-- Результаты будут отображаться здесь без перезагрузки страницы -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#filter-form').on('change', function() {
+        var selectedLength = $('#id_length').val();
+        var selectedWidth = $('#id_width').val();
+        var selectedBase = $('#id_base').val();
+        var selectedColor = $('#id_color').val();
+
+
+        $.ajax({
+            url: '/',
+            type: 'POST',
+            data: {
+                length: selectedLength,
+                width: selectedWidth,
+                base: selectedBase,
+                color: selectedColor,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            dataType: 'json',
+            success: function(data) {
+                var resultsDiv = $('#filtered-results');
+                resultsDiv.empty();
+
+                if (data.beds && data.beds.length > 0) {
+                    for (var i = 0; i < data.beds.length; i++) {
+                        var bed = data.beds[i];
+                        resultsDiv.append(
+                            '<div class="bed-item"><img src="'+ bed.images +'"></div>'
+                        );
+                    }
+                } else {
+                    resultsDiv.append('<p>No matching beds found.</p>');
+                }
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
+
+    });
+});
+</script>
+
+<!-- Text Result -->
+<!-- 
+<div style="float: right;">
+    <h1>Отфильтрованные результаты мебели</h1>
+    <ul>
+        {% for result in filted_result %}
+            <li>lenght: {{ result.lenght }}, width: {{ result.width }}, base: {{ result.base }}, color: {{ result.color }}</li>
+        {% empty %}
+            <li>Нет результатов, удовлетворяющих выбранным параметрам.</li>
+        {% endfor %}
+    </ul>
+</div>
+ -->   
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
